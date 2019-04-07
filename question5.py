@@ -13,16 +13,16 @@ def mergeSortInversions(arr):
         temp = []
         i = 0
         j = 0
-        inv = 0 + leftInv + rightInv # count number of inversions before merging
+        inv = 0 + leftInv + rightInv # count number of inversions from recurrences
         
-    while i < len(left) and j < len(right): # merge the results
+    while i < len(left) and j < len(right): # merge the results and count inversions 
         if left[i] <= right[j]:
             temp.append(left[i])
             i += 1
         else:
             temp.append(right[j])
             j += 1
-            inv += (len(left)-i) # because the rest of the left is then greater as well
+            inv += (len(left) - i) # because the rest of the left is also greater
     temp += left[i:] # add the rest of the left side
     temp += right[j:] # then add the remaining right side
     return temp, inv
